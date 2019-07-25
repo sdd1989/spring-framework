@@ -42,6 +42,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.tests.sample.beans.ResourceTestBean;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.ObjectUtils;
+import test.TestBean;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -399,6 +400,14 @@ public class ClassPathXmlApplicationContextTests {
 		assertThat(ctx.containsBean("service")).isTrue();
 		assertThat(ctx.containsBean("logicOne")).isTrue();
 		assertThat(ctx.containsBean("logicTwo")).isTrue();
+		ctx.close();
+	}
+
+	@Test
+	public void testGetBean(){
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:test-bean.xml");
+		TestBean testBean = (TestBean) ctx.getBean("testBean");
+		System.out.println(testBean);
 		ctx.close();
 	}
 
