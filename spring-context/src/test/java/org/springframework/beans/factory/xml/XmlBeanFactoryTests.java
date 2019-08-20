@@ -1556,6 +1556,12 @@ public class XmlBeanFactoryTests {
 		assertThat(oom.replaceMe("abc")).as("should replace").isEqualTo("cba");
 	}
 
+	@Test
+	public void testXmlBeanFactory(){
+		BeanFactory bf= new XmlBeanFactory (new ClassPathResource ("test-bean.xml"));
+
+	}
+
 	public static class DoSomethingReplacer implements MethodReplacer {
 
 		public Object lastArg;
